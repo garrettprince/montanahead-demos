@@ -9,8 +9,8 @@
 	<main class="flex-col m-auto">
 		<div class="flex justify-center items-center">
 			<PreviousButton />
-			<!-- <PlayButton /> -->
-			<PauseButton />
+			<PlayButton />
+			<!-- <PauseButton /> -->
 			<NextButton />
 		</div>
 	</main>
