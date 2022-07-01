@@ -1,10 +1,29 @@
 <script>
+	function previousClick() {
+		console.log('previous');
+	}
+
+	function nextClick() {
+		console.log('next');
+	}
+
+	function playClick() {
+		console.log('play');
+	}
+
+	function pauseClick() {
+		console.log('pause');
+	}
 </script>
 
 <main class="flex-col m-auto">
 	<div class="flex justify-center items-center">
+		
 		<!-- Previous Button -->
-		<button class="m-6 hover:scale-105 transform transition duration-300 ease-out active:scale-95">
+		<button
+			on:click={previousClick}
+			class="m-6 hover:scale-105 transform transition duration-300 ease-out active:scale-95"
+		>
 			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 123 118">
 				<g id="Group_5" data-name="Group 5" transform="translate(-596 -395)">
 					<path
@@ -28,6 +47,7 @@
 
 		<!-- Play Button -->
 		<button
+			on:click={playClick}
 			class="hover:scale-105 transform transition duration-300 ease-out active:scale-95 align-middle mx-4 mr-[0.8rem]"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 262 303">
@@ -43,6 +63,7 @@
 
 		<!-- Pause Button -->
 		<button
+			on:click={pauseClick}
 			class="hover:scale-105 transform transition duration-300 ease-out active:scale-95 align-middle mx-4"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 218 257">
@@ -68,7 +89,10 @@
 		</button>
 
 		<!-- Next Button -->
-		<button class="m-6 hover:scale-105 transform transition duration-300 ease-out active:scale-95">
+		<button
+			on:click={nextClick}
+			class="m-6 hover:scale-105 transform transition duration-300 ease-out active:scale-95"
+		>
 			<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 123 118">
 				<g id="Group_7" data-name="Group 7" transform="translate(-1210 -395)">
 					<path
