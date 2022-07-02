@@ -8,8 +8,8 @@
 </script>
 
 {#if pageLoad}
-	<body on:load={{ delay: 500 }} class="flex flex-col justify-center h-screen">
-		<header>
+	<body class="flex flex-col justify-center h-screen border border-white">
+		<header class="border border-white">
 			<Nav />
 		</header>
 		<main class="flex h-full">

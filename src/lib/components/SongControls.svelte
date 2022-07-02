@@ -1,14 +1,49 @@
 <script>
+	import { songList } from '../data/SongList';
+
+	// Initialize play state as false when the site loads
 	let playing = false;
 
+	// Bring in song data from the songList.js file
+	const gum = songList.gum.title.toUpperCase();
+	const swimmingLessons = songList.swimmingLessons.title.toUpperCase();
+	const theKing = songList.theKing.title.toUpperCase();
+	const minutes = songList.minutes.title.toUpperCase();
+
+	const songs = [gum, swimmingLessons, theKing, minutes];
+
+	// Establish a variable to hold the current song index from songs array
+	let currentIndex = 0;
+	let currentSong = songs[currentIndex];
+
+	// Functions to handle progressing and regressing through the songs array
 	function previousClick() {
-		console.log('previous');
+		currentIndex -= 1;
+
+		if (currentIndex === -1) {
+			currentIndex = 3;
+		}
+
+		currentSong = songs[currentIndex];
+
+		console.log(currentIndex);
+		console.log(currentSong);
 	}
 
 	function nextClick() {
-		console.log('next');
+		currentIndex += 1;
+
+		if (currentIndex > songs.length - 1) {
+			currentIndex = 0;
+		}
+
+		currentSong = songs[currentIndex];
+
+		console.log(currentIndex);
+		console.log(currentSong);
 	}
 
+	// Functions to handle whether the song is playing or not
 	function playClick() {
 		console.log('play');
 		playing = !playing;
@@ -21,7 +56,10 @@
 </script>
 
 <main class="flex-col m-auto">
-	<div class="flex justify-center items-center">
+	<p class="flex justify-center font-nhaasbd text-2xl border border-white">{currentSong}</p>
+
+	<!-- Buttons Container -->
+	<div class="flex justify-center items-center border border-white">
 		<!-- Previous Button -->
 		<button
 			on:click={previousClick}
@@ -71,7 +109,7 @@
 				on:click={pauseClick}
 				class="hover:scale-105 transform transition duration-300 ease-out active:scale-95 align-middle mx-4"
 			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 218 257">
+				<svg xmlns="http://www.w3.org/2000/svg" width="42" height="43" viewBox="0 0 218 257">
 					<g id="Group_8" data-name="Group 8" transform="translate(-824 -648)">
 						<rect
 							id="Rectangle_3"
@@ -119,4 +157,9 @@
 			</svg>
 		</button>
 	</div>
+	
+	<!-- Song Progress/Time Bar -->
+	<div class="flex bg-red-500 w-20 h-1"></div>
+
+
 </main>
