@@ -2,7 +2,10 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		fontFamily: {
+			nhaasrg: ['NHaasGroteskRg', 'sans-serif'],
+			nhaasbd: ['NHaasGroteskBld', 'sans-serif']
+		}
 	},
 	plugins: []
 };
