@@ -55,11 +55,26 @@
 	}
 </script>
 
-<main class="flex-col m-auto">
-	<p class="flex justify-center font-nhaasbd text-2xl border border-white">{currentSong}</p>
+<!-- Top Song Container -->
+<section class="flex justify-between">
+	<!-- Gum Container -->
+	<div class="flex flex-col">
+		<p class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-400 font-nhaasbd">1</p>
+		<p class="flex ml-4 font-nhaasbd text-2xl transform rotate-90">
+			{gum}
+		</p>
+	</div>
 
+	<!-- Minutes Container -->
+	<div class="flex flex-col">
+		<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">{minutes}</p>
+		<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
+	</div>
+</section>
+
+<main class="flex flex-col mx-auto justify-between">
 	<!-- Buttons Container -->
-	<div class="flex justify-center items-center border border-white">
+	<div class="flex justify-center items-center">
 		<!-- Previous Button -->
 		<button
 			on:click={previousClick}
@@ -157,9 +172,24 @@
 			</svg>
 		</button>
 	</div>
-	
+
 	<!-- Song Progress/Time Bar -->
-	<div class="flex bg-red-500 w-20 h-1"></div>
-
-
+	<!-- <div class="flex bg-red-500 w-20 h-1" /> -->
 </main>
+
+<!-- Bottom Song Container -->
+<section class="flex justify-between">
+	<!-- Swimming Lessons Container -->
+	<div class="flex flex-col">
+		<p class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-400 font-nhaasbd">2</p>
+		<p class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90">
+			{swimmingLessons}
+		</p>
+	</div>
+
+	<!-- The King Container -->
+	<div class="flex flex-col">
+		<p class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270">{theKing}</p>
+		<p class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-400 font-nhaasbd">3</p>
+	</div>
+</section>

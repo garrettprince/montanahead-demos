@@ -2,18 +2,18 @@
 	import { fade } from 'svelte/transition';
 	import Footer from '../lib/components/Footer.svelte';
 	import Nav from '../lib/components/Nav.svelte';
-	import Player from '../lib/components/Player.svelte';
+import SongControls from '../lib/components/SongControls.svelte';
 
 	let pageLoad = true
 </script>
 
 {#if pageLoad}
-	<body class="flex flex-col justify-center h-screen border border-white">
-		<header class="border border-white">
+	<body class="flex flex-col justify-center h-screen">
+		<header class="">
 			<Nav />
 		</header>
-		<main class="flex h-full">
-			<Player />
+		<main class="flex flex-col justify-evenly h-full">
+			<SongControls />
 		</main>
 		<Footer />
 	</body>
