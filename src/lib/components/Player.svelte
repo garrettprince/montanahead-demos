@@ -1,5 +1,9 @@
 <script>
 	import { songList } from '../data/SongList';
+	import { songLyrics } from '../data/SongLyrics';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
+	import { Howl } from 'howler';
 
 	// Initialize play state as false when the site loads
 	let playing = false;
@@ -15,6 +19,27 @@
 	// Establish a variable to hold the current song index from songs array
 	let currentIndex = 0;
 	let currentSong = songs[currentIndex];
+
+	// Functions for users to choose songs out of order via click
+	function gumClick() {
+		currentSong = gum;
+		currentIndex = 0;
+	}
+
+	function swimmingLessonsClick() {
+		currentSong = swimmingLessons;
+		currentIndex = 1;
+	}
+
+	function theKingClick() {
+		currentSong = theKing;
+		currentIndex = 2;
+	}
+
+	function minutesClick() {
+		currentSong = minutes;
+		currentIndex = 3;
+	}
 
 	// Functions to handle progressing and regressing through the songs array
 	function previousClick() {
@@ -43,32 +68,65 @@
 		console.log(currentSong);
 	}
 
+	function testAudio() {
+		audio.gum.play();
+	}
+
 	// Functions to handle whether the song is playing or not
 	function playClick() {
 		console.log('play');
 		playing = !playing;
+		testAudio();
 	}
 
 	function pauseClick() {
 		console.log('pause');
 		playing = !playing;
 	}
+
+	// Test function for importing lyrics
+	const testLyrics = () => {
+		console.log(songLyrics.gum[0]);
+		console.log(songLyrics.gum[1]);
+	};
+
+	testLyrics();
 </script>
 
 <!-- Top Song Container -->
 <section class="flex justify-between">
 	<!-- Gum Container -->
 	<div class="flex flex-col">
-		<p class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-400 font-nhaasbd">1</p>
-		<p class="flex ml-4 font-nhaasbd text-2xl transform rotate-90">
-			{gum}
-		</p>
+		{#if currentSong === gum}
+			<p class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-400 font-nhaasbd">1</p>
+			<p class="flex ml-4 font-nhaasbd text-2xl transform rotate-90">
+				{gum}
+			</p>
+		{:else}
+			<p class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-600 font-nhaasbd">1</p>
+			<button
+				on:click={gumClick}
+				class="flex ml-4 font-nhaasbd text-2xl transform rotate-90 text-gray-600"
+			>
+				{gum}
+			</button>
+		{/if}
 	</div>
 
 	<!-- Minutes Container -->
 	<div class="flex flex-col">
-		<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">{minutes}</p>
-		<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
+		{#if currentSong === minutes}
+			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">{minutes}</p>
+			<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
+		{:else}
+			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270 text-gray-600">
+				{minutes}
+			</p>
+			<button
+				on:click={minutesClick}
+				class="flex transform rotate-270 ml-[0.95rem] text-gray-600 font-nhaasbd">4</button
+			>
+		{/if}
 	</div>
 </section>
 
@@ -181,15 +239,37 @@
 <section class="flex justify-between">
 	<!-- Swimming Lessons Container -->
 	<div class="flex flex-col">
-		<p class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-400 font-nhaasbd">2</p>
-		<p class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90">
-			{swimmingLessons}
-		</p>
+		{#if currentSong === swimmingLessons}
+			<p class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-400 font-nhaasbd">2</p>
+			<p class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90">
+				{swimmingLessons}
+			</p>
+		{:else}
+			<p class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-600 font-nhaasbd">2</p>
+			<button
+				on:click={swimmingLessonsClick}
+				class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90 text-gray-600"
+			>
+				{swimmingLessons}
+			</button>
+		{/if}
 	</div>
 
 	<!-- The King Container -->
 	<div class="flex flex-col">
-		<p class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270">{theKing}</p>
-		<p class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-400 font-nhaasbd">3</p>
+		{#if currentSong === theKing}
+			<p class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270">
+				{theKing}
+			</p>
+			<p class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-400 font-nhaasbd">3</p>
+		{:else}
+			<button
+				on:click={theKingClick}
+				class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270 text-gray-600 "
+			>
+				{theKing}
+			</button>
+			<p class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-600 font-nhaasbd">3</p>
+		{/if}
 	</div>
 </section>

@@ -1,12 +1,18 @@
+import { Howl } from 'howler'
+
 export const songList = {
 	gum: {
 		title: 'Gum',
 		artist: 'Montanahead',
 		album: 'Demos',
-		src: 'https://s3.amazonaws.com/montanahead-audio/gum.mp3',
 		duration: '5:03',
 		year: '2022',
-		description: ''
+		howl: new Howl({
+			src: '/static/audio/Gum.mp3',
+			html5: true,
+			loop: false,
+			volume: 0.5
+		})
 	},
 	swimmingLessons: {
 		title: 'Swimming Lessons',
