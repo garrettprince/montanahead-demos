@@ -84,13 +84,6 @@
 		playing = !playing;
 	}
 
-	// Test function for importing lyrics
-	const testLyrics = () => {
-		console.log(songLyrics.gum[0]);
-		console.log(songLyrics.gum[1]);
-	};
-
-	testLyrics();
 </script>
 
 <!-- Top Song Container -->
@@ -119,12 +112,16 @@
 			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">{minutes}</p>
 			<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
 		{:else}
-			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270 text-gray-600">
+			<p
+				on:click={minutesClick}
+				class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270 text-gray-600 cursor-pointer"
+			>
 				{minutes}
 			</p>
 			<button
 				on:click={minutesClick}
-				class="flex transform rotate-270 ml-[0.95rem] text-gray-600 font-nhaasbd">4</button
+				class="flex transform rotate-270 ml-[0.95rem] text-gray-600 font-nhaasbd cursor-pointer"
+				>4</button
 			>
 		{/if}
 	</div>
@@ -230,6 +227,7 @@
 			</svg>
 		</button>
 	</div>
+	<audio id='audioTest' src="./audio/Gummp3.mp3" controls type='audio'></audio>
 
 	<!-- Song Progress/Time Bar -->
 	<!-- <div class="flex bg-red-500 w-20 h-1" /> -->
@@ -245,10 +243,15 @@
 				{swimmingLessons}
 			</p>
 		{:else}
-			<p class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-600 font-nhaasbd">2</p>
+			<p
+				on:click={swimmingLessonsClick}
+				class="flex transform rotate-90 ml-[-5.5rem] mb-[-0.7rem] text-gray-600 font-nhaasbd cursor-pointer"
+			>
+				2
+			</p>
 			<button
 				on:click={swimmingLessonsClick}
-				class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90 text-gray-600"
+				class="flex ml-[-5.1rem] font-nhaasbd text-2xl transform rotate-90 text-gray-600 cursor-pointer"
 			>
 				{swimmingLessons}
 			</button>
@@ -265,11 +268,16 @@
 		{:else}
 			<button
 				on:click={theKingClick}
-				class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270 text-gray-600 "
+				class="flex font-nhaasbd text-2xl mr-[-1rem] mb-[-0.3rem] transform rotate-270 text-gray-600 cursor-pointer"
 			>
 				{theKing}
 			</button>
-			<p class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-600 font-nhaasbd">3</p>
+			<p
+				on:click={theKingClick}
+				class="flex transform rotate-270 ml-[0.5rem] mr-[-0.8rem] text-gray-600 font-nhaasbd cursor-pointer"
+			>
+				3
+			</p>
 		{/if}
 	</div>
 </section>
