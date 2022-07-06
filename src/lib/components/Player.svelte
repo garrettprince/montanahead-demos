@@ -68,22 +68,16 @@
 		console.log(currentSong);
 	}
 
-	function testAudio() {
-		audio.gum.play();
-	}
-
 	// Functions to handle whether the song is playing or not
 	function playClick() {
 		console.log('play');
 		playing = !playing;
-		testAudio();
 	}
 
 	function pauseClick() {
 		console.log('pause');
 		playing = !playing;
 	}
-
 </script>
 
 <!-- Top Song Container -->
@@ -96,10 +90,15 @@
 				{gum}
 			</p>
 		{:else}
-			<p class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-600 font-nhaasbd">1</p>
+			<p
+				on:click={gumClick}
+				class="flex transform rotate-90 ml-3 mb-[-1rem] text-gray-600 font-nhaasbd cursor-pointer"
+			>
+				1
+			</p>
 			<button
 				on:click={gumClick}
-				class="flex ml-4 font-nhaasbd text-2xl transform rotate-90 text-gray-600"
+				class="flex ml-4 font-nhaasbd text-2xl transform rotate-90 text-gray-600 cursor-pointer"
 			>
 				{gum}
 			</button>
@@ -109,7 +108,11 @@
 	<!-- Minutes Container -->
 	<div class="flex flex-col">
 		{#if currentSong === minutes}
-			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">{minutes}</p>
+			<p
+				class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270"
+			>
+				{minutes}
+			</p>
 			<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
 		{:else}
 			<p
@@ -227,7 +230,6 @@
 			</svg>
 		</button>
 	</div>
-	<audio id='audioTest' src="./audio/Gummp3.mp3" controls type='audio'></audio>
 
 	<!-- Song Progress/Time Bar -->
 	<!-- <div class="flex bg-red-500 w-20 h-1" /> -->

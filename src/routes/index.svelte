@@ -13,7 +13,10 @@
 </script>
 
 {#if ready}
-	<body transition:fade={{ delay: 300, duration: 2000 }} class="flex flex-col justify-center h-screen max-w-3xl mx-auto">
+	<body
+		transition:fade={{ delay: 300, duration: 2000 }}
+		class="flex flex-col justify-center h-screen max-w-3xl mx-auto"
+	>
 		<header class="">
 			<Nav />
 		</header>
