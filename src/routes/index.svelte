@@ -2,7 +2,6 @@
 	import Footer from '../lib/components/Footer.svelte';
 	import Nav from '../lib/components/Nav.svelte';
 	import Player from '../lib/components/Player.svelte';
-	import Player2 from '../lib/components/Player2.svelte';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
@@ -22,7 +21,6 @@
 		</header>
 		<main class="flex flex-col justify-evenly h-full">
 			<Player />
-			<!-- <Player2 /> -->
 		</main>
 		<Footer />
 	</body>

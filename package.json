@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"howler": "^2.2.3"
+		"howler": "^2.2.3",
+		"wavesurfer.js": "^6.2.0"
 	}
 }

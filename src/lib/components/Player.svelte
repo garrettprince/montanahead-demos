@@ -1,12 +1,26 @@
 <script>
 	import { songList } from '../data/SongList';
-	import { songLyrics } from '../data/SongLyrics';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Howl } from 'howler';
+	import { Howler, Howl } from 'howler';
+
+	const sound = new Howl({
+		src: ['../../static/audio/tackleHit.wav'],
+		loop: false,
+		volume: 0.5,
+		preload: true,
+		onload: function() {
+			console.log('loaded');
+		},
+	});
+
+	function playSound() {
+		sound.play()
+	}
 
 	// Initialize play state as false when the site loads
 	let playing = false;
+
 
 	// Bring in song data from the songList.js file
 	const gum = songList.gum.title.toUpperCase();
@@ -108,9 +122,7 @@
 	<!-- Minutes Container -->
 	<div class="flex flex-col">
 		{#if currentSong === minutes}
-			<p
-				class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270"
-			>
+			<p class="flex font-nhaasbd text-2xl mr-[-0.7rem] mb-1 transform rotate-270">
 				{minutes}
 			</p>
 			<p class="flex transform rotate-270 ml-[0.95rem] text-gray-400 font-nhaasbd">4</p>
@@ -163,7 +175,7 @@
 		{#if !playing}
 			<!-- Play Button -->
 			<button
-				on:click={playClick}
+				on:click={playSound}
 				class="hover:scale-105 transform transition duration-300 ease-out active:scale-95 align-middle mx-4 mr-[0.8rem]"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 262 303">
@@ -230,6 +242,8 @@
 			</svg>
 		</button>
 	</div>
+
+	<div id="waveform" />
 
 	<!-- Song Progress/Time Bar -->
 	<!-- <div class="flex bg-red-500 w-20 h-1" /> -->
